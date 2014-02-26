@@ -1,5 +1,4 @@
 import java.sql.*;
-
 /**
  * Database
  * This class reads and writes to a database
@@ -9,11 +8,6 @@ import java.sql.*;
  *
  */
 public class Database {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	
 private boolean DEBUG = false;
 	
@@ -59,7 +53,7 @@ private boolean DEBUG = false;
 		catch (Exception e){
 			System.err.println("Error: Unable to connect to server");
 		}
-	}
+	}   
 	
 	/**
 	 * Method to get all indigrients
