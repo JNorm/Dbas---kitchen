@@ -58,9 +58,23 @@ private boolean DEBUG = false;
 	/**
 	 * Method to get all indigrients
 	 */
-	public void getIndigrients() throws SQLException {
+	public String getIndigrients() throws SQLException {
 		String query = "SELECT * FROM indigrients ";				
-		stmt.execute(query); 
+		
+		//Do the query
+		ResultSet rs = stmt.executeQuery(query);
+		
+		StringBuilder sb = new StringBuilder();
+	    int i = 1;
+		//Extract data from result set
+	    while(rs.next()){
+	         //Retrieve by column name
+	         String name  = rs.getString("name");
+	         int stock = rs.getInt("stock");
+	         
+	         sb.append(i + ": " + name + ", " + stock);
+	     }   
+	     return sb.toString();
 	}
 	
 }
