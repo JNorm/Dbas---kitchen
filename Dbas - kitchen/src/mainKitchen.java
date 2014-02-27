@@ -40,20 +40,12 @@ public class mainKitchen {
 				break;
 
 			case 2:
-				updateIngredients();
 				
 				break;
 
-			case 3:
-				deleteIngredients();
-				break;
-
-			case 4:
-				showRecepies();
-				break;
-
+			
 			// quit
-			case 5:
+			case 3:
 				running = false;
 				break;
 			}
@@ -68,12 +60,10 @@ public class mainKitchen {
 	 */
 	private static void printMenu() {
 		System.out.println("");
-		System.out.println("Kitchen menu: ");
+		System.out.println("Kitchen main menu: ");
 		System.out.println("1: Ingredients");
-		System.out.println("2: Update ingredients");
-		System.out.println("3: Delete ingredients");
-		System.out.println("4: Show recepies");
-		System.out.println("5: Exit");
+		System.out.println("2: Recipies");
+		System.out.println("3: Exit");
 	}
 	
 	/**
@@ -88,7 +78,7 @@ public class mainKitchen {
 		System.out.println("4: Decrease ingredient");
 		System.out.println("5: Add ingredient");
 		System.out.println("6: Delete ingredient");
-		System.out.println("7: Exit");
+		System.out.println("7: Back");
 	}
 
 	/**
