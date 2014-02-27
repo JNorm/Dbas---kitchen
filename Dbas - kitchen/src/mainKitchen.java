@@ -8,25 +8,30 @@ import java.util.Scanner;
  * 
  */
 public class mainKitchen {
-	
+
+	// The scanner for user input
 	static Scanner scanner = new Scanner(System.in);
+
+	// The database connection and communication
 	static Database db = new Database();
 
 	/**
 	 * The main menu is running here
+	 * 
 	 * @param args
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public static void main(String[] args) throws SQLException {
 
-		//The main menu
+		// The main menu
 		int menuOption;
 		boolean running = true;
 		while (running) {
-			
-			//output the menu
+
+			// Output the menu
 			printMenu();
-			
+
+			// Output > char and wait for user input
 			System.out.println("> ");
 			menuOption = stringToInt(scanner.nextLine());
 
@@ -35,23 +40,29 @@ public class mainKitchen {
 				System.out.println("Please enter a valid option");
 				break;
 
+			// Ingredients
 			case 1:
 				ingredientsMain();
 				break;
 
+			// Recipies
 			case 2:
-				
+				// TODO
 				break;
 
-			
-			// quit
+			// Exit
 			case 3:
 				running = false;
+				break;
+
+			// If something else was choosen in the menu
+			default:
+				System.out.println("This menu option is not available, please try again.");
 				break;
 			}
 
 		}
-		//Now the program is going to terminate, close the scanner stream
+		// Now the program is going to terminate, close the scanner stream
 		scanner.close();
 	}
 
@@ -65,7 +76,7 @@ public class mainKitchen {
 		System.out.println("2: Recipies");
 		System.out.println("3: Exit");
 	}
-	
+
 	/**
 	 * Method to print the main ingredients menu to sys out
 	 */
@@ -83,17 +94,21 @@ public class mainKitchen {
 
 	/**
 	 * Method to run when the user is in the main ingredients menu
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
 	private static void ingredientsMain() throws SQLException {
-		
+
 		int menuOption;
 		boolean runningInggredientsMain = true;
+
+		// While the user is in this menu
 		while (runningInggredientsMain) {
-			
-			//Print menu for ingredients
+
+			// Print menu for ingredients
 			printMenuIngredientsMain();
-			
+
+			// Output > char and wait for user input
 			System.out.println("> ");
 			menuOption = stringToInt(scanner.nextLine());
 
@@ -102,14 +117,15 @@ public class mainKitchen {
 				System.out.println("Please enter a valid option");
 				break;
 
+			// Show all ingredients in the system
 			case 1:
 				System.out.println("User should now se all ingredients (both in stock and empty)");
-				System.out.println(db.getIndigrients()); 
+				System.out.println(db.getIndigrients());
 				break;
 
 			case 2:
 				System.out.println("User should now se all ingredients in stock");
-				
+
 				break;
 
 			case 3:
@@ -119,18 +135,22 @@ public class mainKitchen {
 			case 4:
 				System.out.println("Let the user decrease the stock of ingredient");
 				break;
-				
+
 			case 5:
 				System.out.println("Let the user add ingredient");
 				break;
-				
+
 			case 6:
-					System.out.println("Let the user delete ingredient");
-					break;
-				
+				System.out.println("Let the user delete ingredient");
+				break;
+
 			// Exit
 			case 7:
 				runningInggredientsMain = false;
+				break;
+
+			default:
+				System.out.println("This menu option is not available, please try again.");
 				break;
 			}
 
@@ -143,7 +163,7 @@ public class mainKitchen {
 	private static void updateIngredients() {
 		// case troligen
 	}
-	
+
 	/**
 	 * Method to delete from indgredients
 	 */
@@ -151,7 +171,6 @@ public class mainKitchen {
 		// case troligen
 	}
 
-	
 	/**
 	 * Show recipies to the user
 	 */
@@ -162,7 +181,8 @@ public class mainKitchen {
 	/**
 	 * Converts a string to an int if possible.
 	 * 
-	 * @param s String to convert.
+	 * @param s
+	 *            String to convert.
 	 * @return Converted value. -1 if not possible to convert.
 	 */
 	private static int stringToInt(String s) {
