@@ -40,22 +40,22 @@ public class mainKitchen {
 				System.out.println("Please enter a valid option");
 				break;
 
-			// Ingredients
+				// Ingredients
 			case 1:
 				ingredientsMain();
 				break;
 
-			// Recipies
+				// Recipies
 			case 2:
-				// TODO
+				recipiesMain();
 				break;
 
-			// Exit
+				// Exit
 			case 3:
 				running = false;
 				break;
 
-			// If something else was choosen in the menu
+				// If something else was choosen in the menu
 			default:
 				System.out.println("This menu option is not available, please try again.");
 				break;
@@ -117,7 +117,7 @@ public class mainKitchen {
 				System.out.println("Please enter a valid option");
 				break;
 
-			// Show all ingredients in the system
+				// Show all ingredients in the system
 			case 1:
 				System.out.println("User should now se all ingredients (both in stock and empty)");
 				System.out.println(db.getIngredients());
@@ -125,7 +125,7 @@ public class mainKitchen {
 
 			case 2:
 				System.out.println("User should now se all ingredients in stock");
-
+				System.out.println(db.getIngredientsInStock());
 				break;
 
 			case 3:
@@ -138,13 +138,15 @@ public class mainKitchen {
 
 			case 5:
 				System.out.println("Let the user add ingredient");
+				addIngredient();
 				break;
 
 			case 6:
 				System.out.println("Let the user delete ingredient");
+				deleteIngredients();
 				break;
 
-			// Exit
+				// Exit
 			case 7:
 				runningInggredientsMain = false;
 				break;
@@ -154,21 +156,106 @@ public class mainKitchen {
 				break;
 			}
 
+		}		
+
+	}
+
+	
+	/**
+	 * Method to print the main recipies menu to sys out
+	 */
+	private static void printMenuRecipiesMain() {
+		System.out.println("");
+		System.out.println("Recipies menu: ");
+		System.out.println("1: Show all recipies");
+		System.out.println("2: Show all recipies with ingredients in stock");
+		System.out.println("3: Show all recipies with ingredients possibly in stock");
+		System.out.println("4: Back");
+	}
+
+	/**
+	 * Method to run when the user is in the main recipies menu
+	 * 
+	 * @throws SQLException
+	 */
+	private static void recipiesMain() throws SQLException {
+
+		int menuOption;
+		boolean runningRecipiesMain = true;
+
+		// While the user is in this menu
+		while (runningRecipiesMain) {
+
+			// Print menu
+			printMenuRecipiesMain();
+
+			// Output > char and wait for user input
+			System.out.println("> ");
+			menuOption = stringToInt(scanner.nextLine());
+
+			switch (menuOption) {
+			case -1:
+				System.out.println("Please enter a valid option");
+				break;
+
+				// Show all recipies
+			case 1:
+				System.out.println("User should now se all recipies");
+				System.out.println(db.getRecipies());
+				break;
+
+			case 2:
+				System.out.println("User should now se all recipies with ingredients in stock");
+				System.out.println(db.getRecipiesInStock());
+				break;
+
+			case 3:
+				System.out.println("User should now se all recipies possibly with ingredients in stock");
+				break;
+
+			case 4:
+				runningRecipiesMain = false;
+				break;
+
+			default:
+				System.out.println("This menu option is not available, please try again.");
+				break;
+			}
 		}
+
 	}
 
 	/**
-	 * Method to update stock of indgredients
+	 * Method to add a new ingredient
+	 * @throws SQLException 
 	 */
-	private static void updateIngredients() {
-		// case troligen
+	private static void addIngredient() throws SQLException {
+
+		System.out.println("Enter the name of the ingredient:");
+		System.out.println("> ");
+		String name = scanner.nextLine();
+
+		System.out.println("Enter the current stock of the ingredient:");
+		System.out.println("> ");
+		int stock = stringToInt(scanner.nextLine());
+
+		db.addIngredient(name, stock);
+
 	}
 
 	/**
-	 * Method to delete from indgredients
+	 * Method to delete from ingredient
+	 * @throws SQLException 
 	 */
-	private static void deleteIngredients() {
-		// case troligen
+	private static void deleteIngredients() throws SQLException {
+
+		System.out.println("Please enter the name of the ingedient that you would like to remove:");
+		System.out.println(db.getIngredients());
+		System.out.println("> ");
+		String name = scanner.nextLine();
+
+		db.removeIngredient(name);
+
 	}
 
 	/**
