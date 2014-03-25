@@ -63,7 +63,7 @@ public class Database {
 	 * @return The string with ingredientsinfo
 	 */
 	public String getIndigrients() throws SQLException {
-		String query = "SELECT * FROM indigrients ";
+		String query = "SELECT * FROM indigrients";
 
 		// Do the query
 		ResultSet rs = stmt.executeQuery(query);
