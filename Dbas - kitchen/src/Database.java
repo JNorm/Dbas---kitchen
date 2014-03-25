@@ -62,18 +62,16 @@ public class Database {
 	 * Method to get all indigrients
 	 * @return The string with ingredientsinfo
 	 */
-	public String getIndigrients() throws SQLException {
-		String query = "SELECT * FROM indigrients";
+	public String getIngredients() throws SQLException {
+		String query = "SELECT * FROM ingredients";
 
 		// Do the query
 		ResultSet rs = stmt.executeQuery(query);
-
 		//Create a stringbuilder
 		StringBuilder sb = new StringBuilder();
 		
 		//The index of the results so we can track them
 		int i = 1;
-		
 		// Extract data from result set until there is no one left
 		while (rs.next()) {
 			
