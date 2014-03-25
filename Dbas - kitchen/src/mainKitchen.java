@@ -120,7 +120,7 @@ public class mainKitchen {
 			// Show all ingredients in the system
 			case 1:
 				System.out.println("User should now se all ingredients (both in stock and empty)");
-				System.out.println(db.getIndigrients());
+				System.out.println(db.getIngredients());
 				break;
 
 			case 2:
